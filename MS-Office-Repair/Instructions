@@ -1,0 +1,13 @@
+#MS-Office-QuickRepair - Win32 Deployment 
+
+(Use 'Available for enrolled devices'; otherwise, users may lose their current work.)
+
+WARNING: This will close all Office apps. Please save your work first. Office apps will not be available during this process (which usually takes no more than 15 minutes).
+
+INSTRUCTIONS for users:
+
+01. Please make sure to save all your work (otherwise, you will lose your work in Word, Excel, PowerPoint, Outlook, etc.) and click 'Install' on the Office Repair app.
+02. Then, leave the laptop for 15 minutes without opening any Office apps. (Otherwise, THE PROCESS MAY FAIL)
+03. Once the app shows as 'Installed' in your company portal, you can try opening Word, Excel, etc., and test iManage as well. This should resolve the issue.
+04. If the issue persists, please contact the Service Desk at [NUMBER].
+05. Log file will be created at C:\temp\office_repair_log.txt
