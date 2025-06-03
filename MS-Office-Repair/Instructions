@@ -1,6 +1,6 @@
 #MS-Office-QuickRepair - Win32 Deployment 
 
-(Use 'Available for enrolled devices'; otherwise, users may lose their current work.)
+(Deploy as System and use the assignment method 'Available for enrolled devices'. Otherwise, users may lose their current work when the script runs)
 
 WARNING: This will close all Office apps. Please save your work first. Office apps will not be available during this process (which usually takes no more than 15 minutes).
 
