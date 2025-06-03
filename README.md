@@ -1,2 +1,2 @@
 # intune-scripts
-PowerShell scripts and templates for Intune app deployments and automation.
+Useful PowerShell scripts and templates for Intune app deployments and automation.
