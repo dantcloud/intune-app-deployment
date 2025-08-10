@@ -1,1 +1,55 @@
+#📥 Installer Script
+
+# Variables
+$url = "https://www.google.co.uk/"
+$scriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$tempIconPath = Join-Path $scriptDirectory "google.ico"
+$persistentIconPath = "C:\ProgramData\DesktopShortcuts\google.ico"
+$shortcutPath = "C:\Users\Public\Desktop\Google.lnk"
+
+# Ensure destination directory exists
+$persistentDir = Split-Path $persistentIconPath
+if (-not (Test-Path $persistentDir)) {
+    New-Item -Path $persistentDir -ItemType Directory -Force | Out-Null
+}
+
+# Copy icon to permanent location
+Copy-Item -Path $tempIconPath -Destination $persistentIconPath -Force
+
+# Create shortcut
+$shell = New-Object -ComObject WScript.Shell
+$shortcut = $shell.CreateShortcut($shortcutPath)
+$shortcut.TargetPath = $url
+$shortcut.IconLocation = $persistentIconPath
+$shortcut.Save()
+
+Write-Host "Shortcut created with persistent icon at $shortcutPath"
+
+
+#📥 Uninstaller Script
+
+# Variables
+$persistentIconPath = "C:\ProgramData\DesktopShortcuts\google.ico"
+$shortcutPath = "C:\Users\Public\Desktop\Google.lnk"
+$persistentDir = Split-Path $persistentIconPath
+
+# Remove shortcut
+if (Test-Path $shortcutPath) {
+    Remove-Item $shortcutPath -Force
+    Write-Host "Removed shortcut: $shortcutPath"
+}
+
+# Remove icon
+if (Test-Path $persistentIconPath) {
+    Remove-Item $persistentIconPath -Force
+    Write-Host "Removed icon: $persistentIconPath"
+}
+
+# Clean up folder if empty
+if (Test-Path $persistentDir -and !(Get-ChildItem $persistentDir)) {
+    Remove-Item $persistentDir -Force
+    Write-Host "Removed folder: $persistentDir"
+} else {
+    Write-Host "Folder not empty or does not exist, skipping deletion: $persistentDir"
+}
 
